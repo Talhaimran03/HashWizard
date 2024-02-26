@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <base target="_top">
+  <?!= include('login_css'); ?>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</head>
+
+<body>
+
+  <? var url = getScriptUrl() ?>
+
+  <form method="post" action="<?= url ?>/doPost.gs">
+    <div class="form-box">
+      <div class="form-value">
+        <h2>Login Hashing</h2>
+        <div class="imgcontainer">
+          <span alt="Avatar" class="avatar"></span>
+        </div>
+
+        <div class="inputbox">
+          <ion-icon name="mail-outline"></ion-icon>
+          <input type="email" class="input" id="email" name="email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" title="Inserisci un indirizzo email valido" required>
+          <label for="email">Email</label>
+        </div>
+
+        <div class="inputbox">
+          <ion-icon name="lock-closed-outline"></ion-icon>
+          <input type="password" class="input" id="password" name="password" pattern=".{1,}" required>
+          <label for="Password">Password</label>
+        </div>
+
+        <button type="submit" name="submit" value="login">Log in</button>
+
+        <div class="register">
+          <p>Non hai un account? <a href="<?= url ?>?page=register">Registrati</a></p>
+        </div>
+      </div>
+
+
+      <div id="success-message">
+        <? if (typeof registrationSuccess !== 'undefined' && registrationSuccess === true) { ?>
+        <p class="success-message">Registrazione avvenuta con successo. Effettua il login.</p>
+        <? } ?>
+      </div>
+      <div id="error-messages">
+        <? if (typeof loginErrors !== 'undefined') { 
+            loginErrors.forEach(function(error) { 
+              if (error.field === 'email') { ?>
+        <p class="error-message">&#x2022; Email non trovata, registrati.</p>
+        <? } else if (error.field === 'password') { ?>
+        <p class="error-message">&#x2022; Password errata.</p>
+        <? }
+            });
+          } ?>
+      </div>
+    </div>
+  </form>
+  <?!= include('script'); ?>
+
+</body>
+
+</html>
