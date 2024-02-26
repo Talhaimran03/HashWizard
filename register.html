@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <base target="_top">
+  <?!= include('register_css'); ?>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</head>
+
+<body>
+
+  <? var url = getScriptUrl() ?>
+
+  <form method="post" action="<?= url ?>/doPost.gs">
+    
+    <div class="form-box">
+      <h2 class="title">Registrazione Hashing</h2>
+      <div class="form-value">
+
+        
+        <div class="imgcontainer">
+          <span alt="Avatar" class="avatar"></span>
+        </div>
+
+        <div class="inputbox">
+          <ion-icon name="mail-outline"></ion-icon>
+          <input type="email" class="input" id="email" name="email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" title="Inserisci un indirizzo email valido" required>
+          <label for="email">Email</label>
+        </div>
+
+        <div class="inputbox">
+          <ion-icon name="lock-closed-outline"></ion-icon>
+          <input type="password" class="input" id="password" name="password" required>
+          <label for="Password">Password</label>
+        </div>
+
+        <div class="inputbox">
+          <ion-icon name="lock-closed-outline"></ion-icon>
+          <input type="password" class="input" id="confirm_password" name="confirm_password"  required>
+          <label for="confirm_Password">Conferma password</label>
+        </div>
+
+        <div class="inputbox">
+          <ion-icon name="person-outline"></ion-icon>
+          <input type="text"  class="input" id="name" name="name"pattern="[A-Za-zÀ-ÿ\s]{1,}" title="Inserisci un nome valido" required>
+          <label for="username">Nome</label>
+        </div>
+        <div class="inputbox">
+          <ion-icon name="person-outline"></ion-icon>
+          <input type="text" class="input" id="surname" name="surname" pattern="[A-Za-zÀ-ÿ\s]{1,}" title="Inserisci un cognome valido." required>
+          <label for="last_name">Cognome</label>
+        </div>
+
+        <button type="submit" name="submit"value="register" >Registrati</button>
+
+        <div class="Login">
+          <p id="p">Hai già un account? <a href="<?= url ?>?page=login"> Accedi</a></p>
+        </div>
+
+      </div>
+
+      <div id="error-messages">
+        <? if (typeof errors !== 'undefined' && errors.length > 0) { ?>
+        <p class="error-heading"></p>
+        <? errors.forEach(function(error) { ?>
+        <p class="error-message">
+          <?= error ?>
+        </p>
+        <? }) ?>
+        <? } else if (typeof errors !== 'undefined' && errors.email) { ?>
+        <p class="error-message">
+          <?= errors.email ?>
+        </p>
+        <? } ?>
+
+      </div>
+    </div>
+  </form>
+
+  <?!= include('script'); ?>
+
+</body>
+
+</html>
