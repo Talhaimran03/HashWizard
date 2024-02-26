@@ -1,0 +1,45 @@
+<script>
+  function inputCompileStatus(event) {
+    const input = event.target;
+    if (input.value) input.classList.add("compiled");
+    else input.classList.remove("compiled");
+  }
+
+  // Assign event listener to all inputs
+  const inputs = document.getElementsByClassName("input");
+  for (let i=0; i<inputs.length; i++) {
+    inputs[i].addEventListener("keyup", inputCompileStatus)
+  }
+
+  
+  // Opens or closes the Navbar in mobile devices
+  function navBar() {
+      let navBar = document.getElementById("navBar");
+      navBar.classList.toggle("show");
+  }
+
+
+  window.onscroll = () => {
+    let topButton = document.getElementById("topButton")
+    if (window.scrollY >= 100 && topButton.classList.contains("hide")) {
+        topButton.classList.remove("hide");
+    } else if (window.scrollY < 100 && !(topButton.classList.contains("hide"))) {
+        topButton.classList.add("hide");
+    }
+  }
+
+  window.addEventListener('DOMContentLoaded', function() {
+    // Verifica se l'URL contiene un'ancora
+    if (window.location.hash) {
+      // Rimuovi l'ancora dalla URL
+      history.replaceState(null, null, ' ');
+
+      // Scorri verso l'elemento corrispondente all'ancora
+      var targetElement = document.getElementById(window.location.hash.substring(1));
+      if (targetElement) {
+        targetElement.scrollIntoView();
+      }
+    }
+  });
+
+</script>
