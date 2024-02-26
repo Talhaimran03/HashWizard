@@ -1,0 +1,144 @@
+<? // if (typeof sessionUser == 'undefined') { 
+    // return HtmlService.createTemplateFromFile("login").evaluate();
+  // }
+?>
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <base target="_top">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Password Salting</title>
+
+  <? var url = getScriptUrl() ?>
+
+  <!-- Import Styles -->
+  <?!= include('home_css'); ?>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Import Scripts -->
+  <script src="<?= url ?>/script"></script>
+
+  <!-- Icon -->
+  <link rel="icon" href="https://drive.google.com/uc?export=view&id=1dAI6PKARR8ElBizgH2GPGlnm23zDIqkr">
+</head>
+
+<body>
+
+  <!-- <a class="logout-button" href="<?= url ?>?page=logout">
+    <img src="https://drive.google.com/uc?export=view&id=1s6zhq4mQN_S2okity8mexLrkVHcIPs16" alt="Logout">
+  </a> -->
+
+  <!-- Turn up the page -->
+  <a id="topButton" class="hide" href="#"><i class="fa-solid fa-arrow-up"></i></a>
+
+  <!-- NavBar -->
+  <i class="fa-solid fa-bars icon" onclick="navBar()"></i>
+
+  <div id="navBar">
+    <!-- <i class="fa-solid fa-xmark icon close" onclick="navBar()"></i>
+    <a href="#salting">SALTING</a>
+    <a href="#hashing">HASHING</a> -->
+  </div>
+
+  <!-- Header -->
+  <div id="header">
+    <div class="background-image"
+      style="background-image: url('https://cdn.tuttosport.com/img/990/495/2021/11/29/081447951-8cf753f1-9b15-434f-9244-3b87b38604d7.jpg');">
+    </div>
+    <section>
+      <h1 class="title">Password Salting & Hashing</h1><br>
+      <p class="subtitle">Progetto di gruppo a cura di: Imran Talha, Bimsara Kasun, Villardi Riccardo</p>
+    </section>
+  </div>
+
+
+  <!-- Content -->
+  <div class="content">
+    <h1 class="title" id="salting">Password Salting</h1><br>
+    <div class="content-wrapper">
+      <div class="text-wrapper">
+        <p class="text">Il "salting" delle password è una tecnica di sicurezza utilizzata per proteggere le password
+          dagli attacchi di forza bruta e dai tentativi di decodifica. In sostanza, il salting consiste nell'aggiungere
+          un valore casuale (noto come "salt") alla password prima di eseguire la funzione di hash.
+          <br>Tuttavia, i criminali informatici possono sfruttare il fatto che le persone utilizzano spesso password comuni o facili da indovinare. Gli hacker possono creare un "dizionario" di hash pre-calcolati per le password comuni e confrontarli con gli hash rubati. Se la password originale è presente nel dizionario, l'hacker può scoprire la password corrispondente.
+          <br>Il salting delle password rompe questa corrispondenza. Quando un salt viene aggiunto alla password prima dell'hashing, anche se due utenti hanno la stessa password, i loro hash saranno diversi a causa del valore del salt unico. Ogni utente avrà un salt diverso, quindi anche se le password sono uguali, gli hash saranno diversi.
+
+          <br><br>L'uso del salt rende anche più difficile l'utilizzo di attacchi di tabulazione dei rainbow, che sono basati su un dizionario pre-calcolato di hash di password comuni. Anche se un attaccante crea un dizionario di hash per le password più comuni, senza conoscere il salt, il dizionario non sarà utile per violare le password.
+        Inoltre, il salt viene memorizzato insieme all'hash della password nel database dell'applicazione. Quando un utente tenta di accedere, il salt associato al suo account viene estratto dal database e combinato con la password inserita. Il risultato viene quindi hashato e confrontato con l'hash memorizzato nel database. Solo se corrispondono, allora la password è considerata corretta.
+
+          <br><br>In conclusione, il salting delle password è una tecnica portante per migliorare la sicurezza delle password memorizzate. Aggiungendo un valore casuale (salt) alle password prima dell'hashing, si rende molto più difficile per gli attaccanti decifrare le password rubate.
+        </p>
+      </div>
+      <div class="photo-wrapper">
+        <img class="photo" src="https://cdn.pixabay.com/photo/2020/01/02/18/44/computer-4736566_960_720.jpg"><br>
+      </div>
+    </div>
+  </div>
+
+  <div class="content2">
+    <h1 class="title" id="hashing">Hashing</h1><br>
+    <div class="content-wrapper">
+      <div class="text-wrapper">
+        <p class="text">L'hashing è un algoritmo utilizzato per convertire dati di qualsiasi dimensione in
+          una stringa di lunghezza fissa, nota come hash. Gli algoritmi di hash sono progettati in modo tale che il
+          risultato dell'operazione di hashing sia univoco per ogni input diverso. Inoltre, un cambiamento anche minimo
+          nell'input produrrà un hash completamente diverso.
+
+          <br><br>L'hashing viene utilizzato in sicurezza informatica per diverse ragioni:
+
+          <br><br>1. Verifica dell'integrità dei dati: L'hashing può essere utilizzato per verificare se un dato è stato alterato o corrotto. Ad esempio, se si desidera inviare un file e si calcola l'hash del file prima e dopo l'invio, è possibile confrontare i due hash per assicurarsi che il file sia stato trasmesso correttamente senza modifiche;
+
+          <br><br>2. PROTEZIONE DELLA PASSWORD: Le password sono spesso memorizzate come hash anziché in formato testo semplice. Quando un utente crea una password, viene eseguita l'operazione di hashing sull'input della password e l'hash risultante viene memorizzato nel database. Quando l'utente tenta di accedere, la password inserita viene hashata nuovamente e confrontata con l'hash memorizzato. Se i due hash corrispondono, l'accesso viene consentito. Questo fornisce un livello di sicurezza aggiuntivo, poiché anche se l'hash viene compromesso, non è possibile risalire alla password originale. Nel salting precedentemente spiegato viene utilizzato proprio per questo motivo. Rendere sicure le password.;
+
+          <br><br>3. Firma digitale: Le firme digitali sono utilizzate per garantire l'autenticità e l'integrità di un messaggio o di un documento elettronico. Una firma digitale viene creata eseguendo l'hash del messaggio o del documento e applicando una crittografia asimmetrica utilizzando una chiave privata. La firma digitale può essere verificata utilizzando la chiave pubblica corrispondente, garantendo così l'autenticità del mittente e l'integrità dei dati;
+        </p>
+      </div>
+      <div class="photo-wrapper">
+        <img class="photo" src="https://www.soleroservizi.it/wp-content/uploads/2023/02/hacker-2883632_1920-980x653.jpg"><br>
+        <img class="photo" src="https://d2uo11xsaedulq.cloudfront.net/wp-content/uploads/2017/01/16122839/security-265130_1920.jpg"><br>
+      </div>
+    </div>
+  </div>
+
+  <section class="salting">
+    <br>
+    <h2>Spiegazione pratica del salting</h2><br><br>
+    <p>Le password degli utenti vengono salvare nel database facendo il salting della stringa in modo casuale e poi
+      viene usata la funzione di hashing.</p><br>
+
+    <h3>Ecco come funziona, inserisci una stringa di prova:</h3>
+
+    <form method="post" action="<?= url ?>/doPost.gs">
+    <label for="password">Inserisci password</label>
+    <input type="text" id="password" name="password" pattern=".{1,}" required>
+    <button type="submit" name="submit" value="demonstration" >Invio</button>
+  </form>
+
+
+    <p id="myStringElement">
+      Password di partenza:
+      <?= typeof originalPassword !== 'undefined' ? originalPassword : '' ?><br>
+        Salt casuale:
+      <?= typeof salt !== 'undefined' ? salt : '' ?><br>
+        Password con salt:
+      <?= typeof saltedPassword !== 'undefined' ? saltedPassword : '' ?><br>
+        Password Hashed:
+      <?= typeof hashedPassword !== 'undefined' ? hashedPassword : '' ?>
+    </p>
+  </section>
+
+  <section class="cards">
+    <div class="card" style="background-image: url('https://i0.wp.com/hackmethod.com/wp-content/uploads/2017/05/Salting.png?w=491&ssl=1');"></div>
+    <div class="card" style="background-image: url('https://www.researchgate.net/profile/Felix-Draranuwa/publication/359951983/figure/fig3/AS:11431281189589437@1695118319350/Conceptual-diagram-of-the-Hybridized-Data-Security-Model.ppm');"></div>
+
+  </section>
+  </div>
+</body>
+
+</html>
