@@ -1,0 +1,144 @@
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
+  * {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+    background: url('https://media-assets.wired.it/photos/6220caa658b61918b3f16b21/16:9/w_1920,c_limit/GettyImages-1286232673.jpg') no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+
+  .form-box {
+    position: relative;
+    width: 420px;
+    height: 530px;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    backdrop-filter: blur(12px);
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  h2 {
+    font-size: 2.2em;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 25px;
+    margin-top: 0;
+  }
+  
+
+  .inputbox {
+    position: relative;
+    margin: 30px 0;
+    width: 310px;
+    border-bottom: 2px solid #fff;
+  }
+
+  .inputbox label {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    color: #fff;
+    font-size: 1em;
+    pointer-events: none;
+    transition: .5s;
+  }
+
+  input:focus~label,
+  .input.compiled~label {
+    top: -5px;
+  }
+
+  .inputbox input {
+    width: 100%;
+    height: 50px;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1em;
+    padding: 0 35px 0 5px;
+    color: #fff;
+  }
+
+  .inputbox ion-icon {
+    position: absolute;
+    right: 8px;
+    color: #fff;
+    font-size: 1.2em;
+    top: 20px;
+  }
+
+  .button {
+    display: inline-block;
+    width: 140px;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 100px;
+    margin: 5px; 
+    border-radius: 40px;
+    background: #fff;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 600;
+    margin-bottom: 15px;
+    margin-top:5px;
+    text-align: center;
+    text-decoration: none;
+    color: #000;
+  }
+
+  .register {
+    font-size: .9em;
+    color: #fff;
+    text-align: center;
+    margin: 25px 0 10px;
+  }
+
+  .register p a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 600;
+  }
+
+  .register p a:hover {
+    text-decoration: underline;
+  }
+
+  .imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+    display: flex;
+    justify-content: center;
+    margin-bottom:30px;
+  }
+
+  .avatar {
+    background-image: url("https://media2.giphy.com/media/xThta8s7uxfsHRA1fa/giphy.gif?cid=ecf05e47e6xaejvixn2wcyv24jb5136buwhgpr39d0bux8ll&ep=v1_gifs_related&rid=giphy.gif&ct=g");
+    background-size: 250%;
+    background-position: center;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    aspect-ratio: 1;
+    display: block;
+  }
+</style>
